@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { Link, BrowserRouter, Route, Switch  } from "react-router-dom";
+import InterviewList from "./interview";
+import CollaborativeNotebook from "./interview-doc/collaborative-notebook";
 
 function App() {
+  document.title = "My Documents";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter basename="/temp">
+      <nav>
+        <Link to="/">Home</Link>
+        {/* <Link to="/tt">tt</Link> */}
+        <Link to="/interview">Interview</Link>
+        
+      </nav>
+      <div className="content">
+        {/* <Route path="/tt" component={Contact}/> */}
+        <Route path="/interview" component={InterviewList}></Route>
+        <Route path='/interview-doc/collaborative-notebook' component={CollaborativeNotebook}></Route>
+
+      </div>
+    </BrowserRouter>
     </div>
   );
 }
